@@ -8,22 +8,22 @@ __author__ = 'Hunter Files'
 
 class Database(object):
     URI = "mongodb://127.0.0.1:27017"
-    DATABASE = None
+    database = None
 
-    @staticmethod   # means, we are not using self in this method
+    @staticmethod  # means, we are not using self in this method
     def initialize():
         client = pymongo.MongoClient(Database.URI)
-        Database.DATABASE = client['fullstack']
+        Database.database = client['posts']
 
     @staticmethod
-    def insert(collection, query):
-        Database.DATABASE[collection].insert(query)
+    def insert(collection, data):
+        return Database.database[collection].insert(data)
 
     @staticmethod
     def find(collection, query):
-        return Database.DATABASE[collection].find(query)
+        # Database.find('users', {'username': 'jose'})
+        return Database.database[collection].find(query)
 
-    # finds
     @staticmethod
-    def findOne(collection, query):
-        return Database.DATABASE[collection].findOne(query)
+    def find_one(collection, query):
+        return Database.database[collection].find_one(query)
