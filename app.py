@@ -5,21 +5,16 @@
 """
 import pymongo
 
+from database import Database
+from post import Post
+
 __author__ = 'Hunter Files'
 
-uri = "mongodb://127.0.0.1:27017"       # where on the server we are connecting to
-client = pymongo.MongoClient(uri)       # creates a client object to interact
-database = client['fullstack']          # database we are modifying
-collection = database['students']       # collection we are modifying
+Database.initialize()
 
 
-students = [student for student in collection.find({}) if student['Mark'] == 99.0]
-print(students)
+post = Post("Title: ", "Content: ", "Author: ")                   # create an instance of a Post(object)
+post2 = Post("Title: A Title", "Content: Some content", "Author: Hunter")
 
-"""
-students = collection.find({})          # would find all the data in the collection
-student_list = []
-# print(students) shows the Cursor object
-for student in students:                # list comprehension
-    student_list.append(student)        # add each student to a list
-"""
+print(post.content)
+print(post2.author)
