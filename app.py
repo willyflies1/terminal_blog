@@ -5,18 +5,27 @@
 """
 
 #import pymongo
-
+from blog import Blog
 from database import Database
+from menu import Menu
+# from post import Post
 from post import Post
 
 __author__ = 'Hunter Files'
 
+
+"""Works to save a blog to posts collection
 Database.initialize()
 
-blog = Blog(author='Hunter',
-            title='Sample title',
-            description='Description')
+post = Post(blog_id="80245",
+            title='Student lunch number',
+            content='My identification code for food',
+            author=__author__)
+post.saveToMongo()
 
-blog.new_post()
+"""
 
-blog.save_to_mongo()
+Database.initialize()
+
+menu = Menu()
+menu.run_menu()
